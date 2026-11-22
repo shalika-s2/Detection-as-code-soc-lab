@@ -1,0 +1,27 @@
+title: Suspicious PowerShell Encoded Command
+id: 3f2b8c1e-5d7a-4e9b-a1c4-8b6d2e9f0a71
+status: experimental
+description: Detects PowerShell started with an encoded command argument, often used to hide malicious scripts.
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+author: Shalika Weerasinghe
+date: 2026/11/22
+tags:
+    - attack.execution
+    - attack.t1059.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_img:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    selection_cli:
+        CommandLine|contains:
+            - ' -enc '
+            - ' -EncodedCommand '
+    condition: selection_img and selection_cli
+falsepositives:
+    - Admin scripts or software deployment tools that use encoded commands
+level: medium
