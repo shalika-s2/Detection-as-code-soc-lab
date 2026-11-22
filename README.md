@@ -1,3 +1,4 @@
+![Validate Sigma rules](https://github.com/shalika-s2/detection-as-code-soc-lab/actions/workflows/validate-sigma.yml/badge.svg)
 # Detection-as-Code SOC Lab
 
 A home SOC lab where I simulate MITRE ATT&CK techniques, write Sigma
